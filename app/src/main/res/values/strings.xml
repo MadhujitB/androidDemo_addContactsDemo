@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Add Contacts Demo</string>
+
+    <string name="reg_activity_name">Registration</string>
+    <string name="login_activity_name">Login</string>
+
+    <string name="btn_proceed">Proceed</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_set_submit">Submit</string>
+    <string name="btn_set_cancel">Cancel</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_logout">Log Out</string>
+    <string name="btn_showPopUp">Add Contacts</string>
+    <string name="btn_showContacts">View Contacts</string>
+
+    <string name="hint_name">Name</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_city">City</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_empty_new_password">Please enter new password</string>
+    <string name="hint_empty_cnf_password">Please enter confirm password</string>
+    <string name="hint_age">Age</string>
+    <string name="hint_first_name">First name</string>
+    <string name="hint_last_name">Last Name</string>
+
+    <string name="tv_instruction">All fields are compulsory</string>
+    <string name="tv_set_password_header">Set Password</string>
+    <string name="tv_confirmation">Thank You For \n Registration</string>
+    <string name="tv_enter_details">Enter Details</string>
+
+    <string-array name="states">
+        <item>Select states</item>
+        <item>Assam</item>
+        <item>Karnataka</item>
+        <item>Tripura</item>
+        <item>Meghalaya</item>
+        <item>Manipur</item>
+        <item>Nagaland</item>
+        <item>Arunachal Pradesh</item>
+        <item>Sikkim</item>
+        <item>Manipur</item>
+        <item>West Bengal</item>
+        <item>Bihar</item>
+        <item>Odhisa</item>
+        <item>Jharkhand</item>
+        <item>Chattisgarh</item>
+        <item>Gujrat</item>
+        <item>Punjab</item>
+        <item>Haryana</item>
+        <item>Rajasthan</item>
+        <item>Uttar Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Tanil Nadu</item>
+        <item>Andhra Pradesh</item>
+        <item>Kerela</item>
+        <item>Telangana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Select gender</item>
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+</resources>
