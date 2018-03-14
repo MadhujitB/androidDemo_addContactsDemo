@@ -292,4 +292,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public int deleteData_Contacts(int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String selection = ConstantClass.KEY_ID + " LIKE ?";
+        String[] selectionArgs = { String.valueOf(id)};
+
+        int retRowCount = db.delete(TABLE_NAME_CONTACTS, selection, selectionArgs);
+
+        db.close();
+
+        return retRowCount;
+
+    }
+
 }

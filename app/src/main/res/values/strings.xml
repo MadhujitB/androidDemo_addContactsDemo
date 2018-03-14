@@ -33,6 +33,8 @@
     <string name="tv_set_password_header">Set Password</string>
     <string name="tv_confirmation">Thank You For \n Registration</string>
     <string name="tv_enter_details">Enter Details</string>
+    <string name="tv_no_contacts">No Contacts Found</string>
+    <string name="tv_splash_text">Add Contacts Demo</string>
 
     <string-array name="states">
         <item>Select states</item>

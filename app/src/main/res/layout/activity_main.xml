@@ -23,8 +23,8 @@
                 android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/imgView_menuIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_menu_white_18dp"
                     android:contentDescription="@null"
                     android:layout_centerVertical="true"
@@ -95,6 +95,7 @@
                     android:layout_height="25dp"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_call_black_18dp"
+                    android:tint="@color/colorCustom_light_dark_grey"
                     android:layout_marginTop="40dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -117,6 +118,7 @@
                     android:contentDescription="@null"
                     android:layout_below="@+id/imgView_phone"
                     android:src="@drawable/ic_email_black_18dp"
+                    android:tint="@color/colorCustom_light_dark_grey"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -140,6 +142,7 @@
                     android:contentDescription="@null"
                     android:layout_below="@+id/imgView_email"
                     android:src="@drawable/ic_location_city_black_18dp"
+                    android:tint="@color/colorCustom_light_dark_grey"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
