@@ -9,9 +9,15 @@
     tools:context="demo.dada.com.addcontactsdemo.SplashActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradient_color_pink_shade"
+        android:gravity="center"
         android:text="@string/tv_splash_text"
+        android:textColor="@android:color/white"
         android:textSize="22sp"/>
 
 </RelativeLayout>

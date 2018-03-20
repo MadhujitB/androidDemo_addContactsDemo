@@ -12,8 +12,10 @@
     <string name="btn_set_cancel">Cancel</string>
     <string name="btn_close">Close</string>
     <string name="btn_logout">Log Out</string>
-    <string name="btn_showPopUp">Add Contacts</string>
-    <string name="btn_showContacts">View Contacts</string>
+    <string name="btn_showPopUp">Add</string>
+    <string name="btn_showContacts">View</string>
+    <string name="btn_instruction_ok">OK</string>
+    <string name="btn_send_sms">Send</string>
 
     <string name="hint_name">Name</string>
     <string name="hint_phone">Phone</string>
@@ -28,13 +30,17 @@
     <string name="hint_age">Age</string>
     <string name="hint_first_name">First name</string>
     <string name="hint_last_name">Last Name</string>
+    <string name="hint_type_message">Type your message</string>
 
     <string name="tv_instruction">All fields are compulsory</string>
     <string name="tv_set_password_header">Set Password</string>
-    <string name="tv_confirmation">Thank You For \n Registration</string>
+    <string name="tv_confirmation">Thank You For \n\n Registration</string>
     <string name="tv_enter_details">Enter Details</string>
+    <string name="tv_edit_details">Edit Details</string>
     <string name="tv_no_contacts">No Contacts Found</string>
     <string name="tv_splash_text">Add Contacts Demo</string>
+    <string name="tv_instruction_delete">Swipe LEFT to delete a contact</string>
+    <string name="tv_instruction_edit">Swipe RIGHT to edit a contact</string>
 
     <string-array name="states">
         <item>Select states</item>

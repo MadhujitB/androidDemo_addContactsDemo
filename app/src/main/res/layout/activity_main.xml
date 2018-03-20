@@ -49,17 +49,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_showPopUp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:layout_marginTop="300dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/custom_button_background_cyan"/>
 
         <Button
             android:id="@+id/btn_showContacts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_showContacts"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/btn_showPopUp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="30dp"
+            android:background="@drawable/custom_button_background_pink"/>
 
 
     </RelativeLayout>
@@ -76,7 +82,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/colorAccent">
+                android:background="@drawable/gradient_colour">
                 <TextView
                     android:id="@+id/tv_displayName"
                     android:layout_width="match_parent"
@@ -164,8 +170,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_logout"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_button_background_pink"/>
 
             </RelativeLayout>
 

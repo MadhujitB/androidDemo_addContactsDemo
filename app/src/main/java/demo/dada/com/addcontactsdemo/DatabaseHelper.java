@@ -31,7 +31,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ConstantClass.KEY_EMAIL + " TEXT, "
             + ConstantClass.KEY_CITY + " TEXT, "
             + ConstantClass.KEY_STATE + " TEXT, "
-            + ConstantClass.KEY_PASSWORD + " TEXT)";
+            + ConstantClass.KEY_PASSWORD + " TEXT, "
+            + ConstantClass.KEY_LOGIN_COUNT + " INTEGER)";
 
     private static final String CREATE_TABLE_CONTACTS = "CREATE TABLE " + TABLE_NAME_CONTACTS + "("
             + ConstantClass.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -40,7 +41,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ConstantClass.KEY_GENDER + " TEXT, "
             + ConstantClass.KEY_AGE + " INTEGER, "
             + ConstantClass.KEY_PHONE + " LONG, "
-            + ConstantClass.KEY_EMAIL + " TEXT)";
+            + ConstantClass.KEY_EMAIL + " TEXT, "
+            + ConstantClass.KEY_ACCOUNT_PHONE + " LONG)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,6 +54,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(CREATE_TABLE_DEMO);
         db.execSQL(CREATE_TABLE_CONTACTS);
+
+        Log.d("onCreate()","Called Successfully");
     }
 
     @Override
@@ -60,6 +64,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_REGISTRATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_CONTACTS);
         onCreate(db);
+
+        Log.d("onUpgrade()","Called Successfully");
     }
 
     public long insertData_Registration(String name, long phone, String email,
@@ -75,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ConstantClass.KEY_CITY, city);
         contentValues.put(ConstantClass.KEY_STATE, state);
         contentValues.put(ConstantClass.KEY_PASSWORD, password);
+        contentValues.put(ConstantClass.KEY_LOGIN_COUNT, 0);
 
         long rowId = db.insert(TABLE_NAME_REGISTRATION, null, contentValues);
 
@@ -94,7 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ConstantClass.KEY_EMAIL,
                 ConstantClass.KEY_CITY,
                 ConstantClass.KEY_STATE,
-                ConstantClass.KEY_PASSWORD
+                ConstantClass.KEY_PASSWORD,
         };
 
         Cursor cursor = db.query(
@@ -106,6 +113,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,
                 null
         );
+
+        arrayList.clear();
 
         while (cursor.moveToNext())
         {
@@ -167,6 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String name = "";
             String email = "";
             String city = "";
+
             Log.d("Cursor","Count: " + cursor.getCount());
             if (cursor.getCount() >= 1)
 
@@ -202,7 +212,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
-    public long insertData_Contacts(String fname, String lname, String gender, int age, long phone, String email)
+    public int setLoginCount_Registration(long mobile, int count)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(ConstantClass.KEY_LOGIN_COUNT, count);
+
+        String selection = ConstantClass.KEY_PHONE + " LIKE ?";
+        String[] selectionArgs = {String.valueOf(mobile)};
+
+        int lgnCnt = db.update(TABLE_NAME_REGISTRATION, cv,selection,selectionArgs);
+
+        if(db.isOpen())
+           db.close();
+
+        return lgnCnt;
+    }
+
+    public int getLoginCount_Registration(long mobile)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String[] projection = {
+            ConstantClass.KEY_LOGIN_COUNT
+        };
+
+        String selection = ConstantClass.KEY_PHONE + " LIKE ?";
+        String[] selectionArgs = {String.valueOf(mobile)};
+
+        Cursor cursor = db.query(
+                TABLE_NAME_REGISTRATION,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+                );
+
+        int cntVal = 0;
+
+        if(cursor.getCount() > 0)
+        {
+            while (cursor.moveToNext())
+            {
+                cntVal = cursor.getInt(cursor.getColumnIndexOrThrow(ConstantClass.KEY_LOGIN_COUNT));
+            }
+        }
+
+        if(!cursor.isClosed())
+            cursor.close();
+
+        if(db.isOpen())
+            db.close();
+
+        return cntVal;
+    }
+
+
+
+    public long insertData_Contacts(String fname, String lname, String gender, int age, long phone, String email, long accPh)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -214,13 +284,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ConstantClass.KEY_AGE, age);
         contentValues.put(ConstantClass.KEY_PHONE, phone);
         contentValues.put(ConstantClass.KEY_EMAIL, email);
+        contentValues.put(ConstantClass.KEY_ACCOUNT_PHONE, accPh);
 
         long rowId = db.insert(TABLE_NAME_CONTACTS, null, contentValues);
 
         return rowId;
     }
 
-    public ArrayList<ContactsData> readData_Contacts()
+    public ArrayList<ContactsData> readData_Contacts(long accPh)
     {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -236,11 +307,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ConstantClass.KEY_EMAIL
         };
 
+        String selection = ConstantClass.KEY_ACCOUNT_PHONE + " = ?";
+        String[] selectionArgs = {String.valueOf(accPh)};
+
         Cursor cursor = db.query(
                 TABLE_NAME_CONTACTS,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null
@@ -305,6 +379,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return retRowCount;
 
+    }
+
+    int verifyContact(long mob)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] projection = {
+                            ConstantClass.KEY_ID,
+                            ConstantClass.KEY_PHONE
+        };
+        String selection = ConstantClass.KEY_PHONE + " = ?";
+        String[] selectionArgs = {String.valueOf(mob)};
+        Cursor cursor = db.query(
+                        TABLE_NAME_REGISTRATION,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        null
+        );
+
+        int count = cursor.getCount();
+
+        if(!cursor.isClosed())
+            cursor.close();
+
+        if (db.isOpen())
+            db.close();
+
+        return count;
+    }
+
+    public int setPassword_Registration(long phone, String password)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(ConstantClass.KEY_PASSWORD, password);
+
+        String selection = ConstantClass.KEY_PHONE + " = ?";
+        String[] selectionArgs = {String.valueOf(phone)};
+
+        int cnt = db.update(TABLE_NAME_REGISTRATION, cv, selection, selectionArgs);
+
+        return cnt;
     }
 
 }

@@ -2,6 +2,10 @@
 <manifest package="demo.dada.com.addcontactsdemo"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,22 +13,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".RegistrationActivity"
-            android:label="@string/reg_activity_name">
+            android:label="@string/reg_activity_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBarLogin">
         </activity>
-        <activity android:name=".LoginActivity">
 
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBarLogin">
         </activity>
-        <activity android:name=".ViewContactsActivity">
+
+        <activity
+            android:name=".ViewContactsActivity"
+            android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".SplashActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -37,14 +37,17 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        //Initialising the buttons
         findViewById(R.id.btn_register).setOnClickListener(this);
         findViewById(R.id.btn_clear).setOnClickListener(this);
 
+        //Initialising the EditTexts
         editText_name = findViewById(R.id.editText_name);
         editText_phone = findViewById(R.id.editText_phone);
         editText_email = findViewById(R.id.editText_email);
         editText_city = findViewById(R.id.editText_city);
 
+        //Initialising the TextInputLayouts
         contains_name = findViewById(R.id.contains_name);
         contains_phone = findViewById(R.id.contains_phone);
         contains_email = findViewById(R.id.contains_email);
@@ -55,18 +58,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         databaseHelper = new DatabaseHelper(this);
 
         Resources rs = this.getResources();
-        String[] spinnerArray = rs.getStringArray(R.array.states);
-        spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_state.setAdapter(spinnerAdapter);
+        String[] spinnerArray = rs.getStringArray(R.array.states); //Setting up array
+
+        //Setting up spinner adapter
+        spinnerAdapter = new ArrayAdapter<>(this, R.layout.custom_layout_simple_spinner_item, spinnerArray);
+        spinnerAdapter.setDropDownViewResource(R.layout.custom_layout_simple_spinner_dropdown);
+        spinner_state.setAdapter(spinnerAdapter); //Setting adapter in the spinner
 
         state = "";
 
+        //Selecting an item from spinner dropdown list
         spinner_state.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 state = spinner_state.getSelectedItem().toString();
-                Log.d("Selected","State: " + state);
             }
 
             @Override
@@ -83,37 +88,34 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         {
             case R.id.btn_register:
 
-
-
                 name = editText_name.getText().toString().trim();
                 String ph = editText_phone.getText().toString().trim();
                 email = editText_email.getText().toString().trim();
                 city = editText_city.getText().toString().trim();
 
-
-
-                Log.d("Inside Button","State: " + state);
-
+                //Checking the whether all the fields are filled or not
                 if(!name.isEmpty() && !ph.isEmpty() && !email.isEmpty() && !city.isEmpty()) {
 
                     if(state.equals("Select states") || state.equals(""))
                         Toast.makeText(this, "Please select a state", Toast.LENGTH_SHORT).show();
 
                      else{
-
-                        if(ph.length() == 10)
+                        //Checking the validity of the phone number in terms of digits
+                        if(ph.length() == 10) {
                             phone = Long.parseLong(ph);
 
                             ArrayList aL = databaseHelper.readData_Pssd(phone);
                             int count = aL.size();
 
-                            if(count == 0)
-                                if(validateEmail(email))
+
+                            if (count == 0)//Verifying whether the phone number already exits or not
+                                if (validateEmail(email)) //Verifying the email pattern
                                     showPopUp_SetPassword();
                                 else
                                     contains_email.setError("Please enter a valid email id");
-                            else if(count >= 1)
+                            else if (count >= 1)
                                 contains_phone.setError("Phone number already exits");
+                        }
                         else
                             contains_phone.setError("Please enter a valid phone number");
 
@@ -139,6 +141,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.btn_clear:
+                //Clearing the Edit Text fields
+
                 editText_name.setText("");
                 editText_name.clearFocus();
 
@@ -158,7 +162,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private void showPopUp_SetPassword()
     {
+        //AlertDialog pop-up for setting up new password.
+
         try {
+            //Using layout inflater to create a view object of the layout
+
             LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.customised_password_layout, null, false);
 
@@ -175,6 +183,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             builder.setView(view);
             final AlertDialog dialog = builder.create();
             dialog.show();
+            dialog.setCanceledOnTouchOutside(false);//Alert Dialog cannot be dismissed by clicking outside of it. It can only be dismissed by pressing the Cancel button.
 
             btn_set_submit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -233,13 +242,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             long rowId = databaseHelper.insertData_Registration(name, phone, email, city, state, password);
 
-            Log.d("Row Id","Value: " + rowId);
-
             btn_close.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Log.d("Datas","Name: " + name + "\nCity: "+ city + "\nPhone: " + phone + "\nEmail: " + email + "\nState: " + state);
 
                     Intent gotoLoginActivity = new Intent(RegistrationActivity.this, LoginActivity.class);
                     gotoLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

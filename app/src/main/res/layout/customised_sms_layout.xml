@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="15dp"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/gradient_color_brown_shade">
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/containsSMSMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        android:hint="@string/hint_type_message"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tiet_myMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
+    </android.support.design.widget.TextInputLayout>
+    <Button
+        android:id="@+id/btn_send_sms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_send_sms"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button_background_pink"/>
+
+</LinearLayout>

@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
+    android:background="@drawable/gradient_color_brown_shade"
     android:focusableInTouchMode="true">
 
     <TextView
@@ -17,6 +18,7 @@
         android:textSize="22sp"
         android:textAlignment="center"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:layout_marginTop="20dp"/>
     <View
         android:id="@+id/view_enter_details"
@@ -45,29 +47,41 @@
         android:id="@+id/contains_firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_first_name"
         app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400"
         android:layout_marginTop="20dp">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/tiet_firstName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/hint_first_name"
             android:inputType="textCapWords"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/contains_lastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        android:hint="@string/hint_last_name"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/tiet_lastName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/hint_last_name"
             android:inputType="textCapWords"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
     </android.support.design.widget.TextInputLayout>
 
     <RelativeLayout
@@ -79,7 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:background="@drawable/gradient_color_brown_shade"/>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/contains_age"
@@ -88,19 +103,25 @@
             android:layout_toRightOf="@+id/spinner_gender"
             android:layout_toEndOf="@+id/spinner_gender"
             android:layout_alignBaseline="@+id/spinner_gender"
+            android:hint="@string/hint_age"
             app:errorEnabled="true"
+            app:errorTextAppearance="@style/ErrorAppearance"
+            app:hintTextAppearance="@style/HintAppearance"
+            android:textColorHint="@color/colorCustom_grey_400"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/tiet_age"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:hint="@string/hint_age"
                 android:inputType="number"
                 android:imeOptions="actionNext"
                 android:textAlignment="center"
                 android:maxLength="3"
-                android:digits="0123456789"/>
+                android:digits="0123456789"
+                android:backgroundTint="@color/colorCustom_grey_400"
+                android:textColor="@android:color/white"
+                android:textCursorDrawable="@null"/>
         </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
 
@@ -108,29 +129,41 @@
         android:id="@+id/contains_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        android:hint="@string/hint_phone"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/tiet_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/hint_phone"
             android:inputType="phone"
             android:maxLength="10"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/contains_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/tiet_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:imeOptions="actionNext"/>
+            android:imeOptions="actionDone"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
     </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
@@ -141,6 +174,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_set_submit"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
         android:layout_marginTop="10dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/custom_button_background_pink"/>
 </RelativeLayout>

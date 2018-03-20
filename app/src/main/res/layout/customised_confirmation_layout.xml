@@ -4,14 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/gradient_color_brown_shade">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/tv_confirmation"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
 
     <Button
         android:id="@+id/btn_close"
@@ -19,7 +23,8 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_close"
         android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button_background_pink"
         android:layout_marginTop="15dp"/>
 
 </LinearLayout>

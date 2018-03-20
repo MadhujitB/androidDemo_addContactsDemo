@@ -3,27 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingRight="15dp"
-    android:paddingLeft="15dp"
+    android:paddingRight="50dp"
+    android:paddingLeft="50dp"
     android:focusableInTouchMode="true"
+    android:background="@drawable/gradient_color_brown_shade"
     tools:context="demo.dada.com.addcontactsdemo.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login!"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:gravity="center"
+        android:layout_marginBottom="75dp"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/containsUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        android:hint="@string/hint_phone_number"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400"
+        android:layout_marginBottom="20dp">
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="phone"
-            android:hint="@string/hint_phone_number"
-            android:imeOptions="actionNext"/>
+            android:maxLines="1"
+            android:maxLength="10"
+
+            android:imeOptions="actionNext"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -31,34 +52,50 @@
         android:id="@+id/containsPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        android:hint="@string/hint_password"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/ErrorAppearance"
+        app:hintTextAppearance="@style/HintAppearance"
+        android:textColorHint="@color/colorCustom_grey_400">
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
-            android:hint="@string/hint_password"
-            android:imeOptions="actionDone"/>
+            android:imeOptions="actionDone"
+            android:backgroundTint="@color/colorCustom_grey_400"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@null"
+            />
     </android.support.design.widget.TextInputLayout>
 
-    <RelativeLayout
+
+
+    <Button
+        android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <Button
-            android:id="@+id/btn_sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_sign_up"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-        <Button
-            android:id="@+id/btn_sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_sign_in"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
+        android:text="@string/btn_sign_in"
+        android:textColor="@android:color/white"
+        android:background="@drawable/custom_button_background_cyan"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Or"
+        android:textColor="@color/colorCustom_grey_300"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sign_up"
+        android:textColor="@android:color/white"
+        android:background="@drawable/custom_button_background_pink"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>

@@ -64,12 +64,29 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
             }
         });
 
-        holder.imgView_delete.setOnClickListener(new View.OnClickListener() {
+
+        holder.imgView_makeCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.deleteData(holder.getAdapterPosition());
+
+                activity.checkCallPermission(holder.getAdapterPosition());
             }
         });
+
+        holder.imgView_sendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.checkSmsPermission(holder.getAdapterPosition());
+            }
+        });
+
+        holder.imgView_sendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.sendEmail(holder.getAdapterPosition());
+            }
+        });
+
 
     }
 
@@ -85,7 +102,9 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
         TextView tv_displayPhone;
         TextView tv_displayEmail;
         ImageView imgView_edit;
-        ImageView imgView_delete;
+        ImageView imgView_makeCall;
+        ImageView imgView_sendSMS;
+        ImageView imgView_sendEmail;
 
         ViewHolder(View itemView)
         {
@@ -97,7 +116,9 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
             tv_displayPhone = itemView.findViewById(R.id.tv_displayPhone);
             tv_displayEmail = itemView.findViewById(R.id.tv_displayEmail);
             imgView_edit = itemView.findViewById(R.id.imgView_edit);
-            imgView_delete = itemView.findViewById(R.id.imgView_delete);
+            imgView_makeCall = itemView.findViewById(R.id.imgView_makeCall);
+            imgView_sendSMS = itemView.findViewById(R.id.imgView_sendSMS);
+            imgView_sendEmail = itemView.findViewById(R.id.imgView_sendEmail);
         }
 
     }

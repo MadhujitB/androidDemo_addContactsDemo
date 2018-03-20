@@ -9,6 +9,7 @@ import android.os.Bundle;
 public class SplashActivity extends Activity {
 
     private ManageSession manageSession;
+    private  DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         manageSession = new ManageSession(this);
+        databaseHelper = new DatabaseHelper(this);
 
 
         Handler handler = new Handler();
@@ -23,9 +25,12 @@ public class SplashActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
+                //If the user is logged in, then he/she will be taken to MainActivity
                 if (manageSession.isLogIn())
                     takeTo_MainActivity();
-                else
+
+                else //If the user is not logged in, then he/she will be taken to LoginActivity
                     takeTo_LoginActivity();
             }
         }, 3000);
@@ -47,5 +52,12 @@ public class SplashActivity extends Activity {
         gotoLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         gotoLoginActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(gotoLoginActivity);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        databaseHelper.close();
     }
 }

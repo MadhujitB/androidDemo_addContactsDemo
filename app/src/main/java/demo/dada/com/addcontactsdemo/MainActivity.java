@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_displayName, tv_displayPhone, tv_displayEmail, tv_displayCity;
     private DatabaseHelper databaseHelper;
     private String gender_str = "";
+    private long phn = 0;
 
 
     @Override
@@ -88,8 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_showContacts:
-                Intent gotoViewContactsActivity = new Intent(this, ViewContactsActivity.class);
-                startActivity(gotoViewContactsActivity);
+
+
+                    Intent gotoViewContactsActivity = new Intent(this, ViewContactsActivity.class);
+                    gotoViewContactsActivity.putExtra("Account Mob Num", phn);
+                    startActivity(gotoViewContactsActivity);
+
         }
     }
 
@@ -128,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     name = me.getValue().toString();
 
         }
-        long phn = Long.parseLong(phone);
+        phn = Long.parseLong(phone);
         ArrayList aL = databaseHelper.readData_Pssd(phn);
         email = aL.get(4).toString();
         city = aL.get(5).toString();
@@ -260,12 +267,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if(age > 0)
                         if(phone_str.length() == 10)
-                            if(!gender_str.equals("Select gender")) {
+                            if(!gender_str.equals("Select gender"))
+                                if(validateEmail(email)){
+                                   long rowVal = databaseHelper.insertData_Contacts(firstName, lastName, gender_str, age, phone, email, phn);
+                                    Log.d("Return Row Id", "Value: " + rowVal);
+                                    dialog.dismiss();
+                                }
 
-                                long rowVal = databaseHelper.insertData_Contacts(firstName, lastName, gender_str, age, phone, email);
-                                Log.d("Return Row Id", "Value: " + rowVal);
-                                dialog.dismiss();
-                            }
+                                else
+                                    contains_email.setError("Please enter a valid email id");
+
                             else
                                 Toast.makeText(MainActivity.this, "Please select a gender", Toast.LENGTH_SHORT).show();
 
@@ -295,5 +306,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean validateEmail(String email)
+    {
+        Pattern pattern = Pattern.compile(ConstantClass.EMAIL_PATTERN);
+
+        Matcher matcher = pattern.matcher(email);
+
+        boolean val = matcher.matches();
+
+        return val;
     }
 }

@@ -19,6 +19,8 @@ public class ConstantClass {
     public static final String KEY_LAST_NAME = "last_name";
     public static final String KEY_GENDER = "gender";
     public static final String KEY_AGE = "age";
+    public static final String KEY_LOGIN_COUNT = "loginCount";
+    public static final String KEY_ACCOUNT_PHONE = "accountPhone";
 
     public static final String EMAIL_PATTERN =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
