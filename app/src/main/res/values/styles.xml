@@ -17,9 +17,15 @@
 
     <style name="AppThemeNoActionBarLogin" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorCustom_brown_300</item>
+        <item name="colorPrimary">@color/colorCustom_brown_600</item>
+        <item name="colorPrimaryDark">@color/colorCustom_brown_800</item>
         <item name="colorAccent">@android:color/white</item>
+    </style>
+
+    <style name="AppThemeNoActionBarGen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorCustom_brown_600</item>
+        <item name="colorPrimaryDark">@color/colorCustom_brown_800</item>
+        <item name="colorAccent">@color/colorCustom_grey_400</item>
     </style>
 
 

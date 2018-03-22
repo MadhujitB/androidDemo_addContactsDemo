@@ -42,7 +42,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ViewContactsActivity extends AppCompatActivity {
+public class ViewContactsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recView;
     private RecyclerView.LayoutManager layoutManager;
@@ -55,6 +55,7 @@ public class ViewContactsActivity extends AppCompatActivity {
     private ManageSession manageSession;
     private long accountMobNum = 0;
     private int loginCount = 0;
+    private TextView tv_setTitle;
 
 
     @Override
@@ -63,6 +64,7 @@ public class ViewContactsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_contacts);
 
 
+        tv_setTitle = findViewById(R.id.tv_setTitle);
         tv_no_contacts = findViewById(R.id.tv_no_contacts);
         recView = findViewById(R.id.recView);
         layoutManager = new LinearLayoutManager(this);
@@ -78,7 +80,15 @@ public class ViewContactsActivity extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(recView);
 
         accountMobNum = this.getIntent().getLongExtra("Account Mob Num",0);
-        Log.d("Account Mobile", "Number: " + accountMobNum);
+
+        String title = "View Contacts";
+        tv_setTitle.setText(title);
+
+        findViewById(R.id.imgView_backIcon).setVisibility(View.VISIBLE);
+        findViewById(R.id.imgView_backIcon).setOnClickListener(this);
+        findViewById(R.id.imgView_hmbgIcon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.imgView_infoIcon).setOnClickListener(this);
+
 
         setDataInAdapter();
     }
@@ -129,8 +139,6 @@ public class ViewContactsActivity extends AppCompatActivity {
         final TextInputLayout contains_age = view.findViewById(R.id.contains_age);
         final TextInputLayout contains_phone = view.findViewById(R.id.contains_phone);
         final TextInputLayout contains_email = view.findViewById(R.id.contains_email);
-
-
 
         TextView tv_display_enter_details = view.findViewById(R.id.tv_display_enter_details);
         tv_display_enter_details.setText(R.string.tv_edit_details);
@@ -265,34 +273,6 @@ public class ViewContactsActivity extends AppCompatActivity {
 
     }
 
-    private void deleteData(final int position)
-    {
-
-        final int id = arrayList.get(position).getId();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete Contact !!!");
-        builder.setMessage("Are you sure to delete this contact?");
-
-
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-    }
 
     private boolean validateEmail(String email)
     {
@@ -345,7 +325,14 @@ public class ViewContactsActivity extends AppCompatActivity {
                         adapter.notifyItemRangeChanged(position, adapter.getItemCount());
 
                     }
-                }).show();  //show alert dialog
+                });  //show alert dialog
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(ViewContactsActivity.this, R.color.colorAccent));
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(ViewContactsActivity.this, R.color.colorAccent));
+
+
             }
 
 
@@ -381,6 +368,7 @@ public class ViewContactsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
     }
 
     public void checkCallPermission(int pos)
@@ -503,5 +491,21 @@ public class ViewContactsActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailId});
         emailIntent.setType("message/rfc822");
         startActivity(Intent.createChooser(emailIntent,"Select Email App"));
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId())
+        {
+            case R.id.imgView_backIcon:
+                onBackPressed();
+                break;
+
+            case R.id.imgView_infoIcon:
+                onCoachMark();
+                break;
+        }
+
     }
 }

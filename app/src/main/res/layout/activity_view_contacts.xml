@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,19 +7,29 @@
     android:layout_height="match_parent"
     tools:context="demo.dada.com.addcontactsdemo.ViewContactsActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recView"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:id="@+id/tv_no_contacts"
+        android:layout_height="wrap_content">
+        <include layout="@layout/customised_toolbar_layout"/>
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/tv_no_contacts"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:visibility="gone"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
+        <TextView
+            android:id="@+id/tv_no_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_no_contacts"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:visibility="gone"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

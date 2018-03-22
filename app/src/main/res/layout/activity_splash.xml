@@ -14,7 +14,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/gradient_color_pink_shade"
+        android:background="@drawable/gradient_color_brown_splash_screen"
         android:gravity="center"
         android:text="@string/tv_splash_text"
         android:textColor="@android:color/white"

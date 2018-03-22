@@ -41,35 +41,41 @@
     <string name="tv_splash_text">Add Contacts Demo</string>
     <string name="tv_instruction_delete">Swipe LEFT to delete a contact</string>
     <string name="tv_instruction_edit">Swipe RIGHT to edit a contact</string>
+    <string name="tv_about_app">
+        The main functionality is to add phone contacts.\n\nApart from adding the contacts, one can edit or delete those contacts.\n\nUser can also call, send an email or also can send sms to a particular contact from the app.
+    </string>
 
     <string-array name="states">
         <item>Select states</item>
-        <item>Assam</item>
-        <item>Karnataka</item>
-        <item>Tripura</item>
-        <item>Meghalaya</item>
-        <item>Manipur</item>
-        <item>Nagaland</item>
-        <item>Arunachal Pradesh</item>
-        <item>Sikkim</item>
-        <item>Manipur</item>
-        <item>West Bengal</item>
-        <item>Bihar</item>
-        <item>Odhisa</item>
-        <item>Jharkhand</item>
-        <item>Chattisgarh</item>
-        <item>Gujrat</item>
-        <item>Punjab</item>
-        <item>Haryana</item>
-        <item>Rajasthan</item>
-        <item>Uttar Pradesh</item>
-        <item>Maharashtra</item>
-        <item>Tanil Nadu</item>
         <item>Andhra Pradesh</item>
-        <item>Kerela</item>
-        <item>Telangana</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chattisgarh</item>
+        <item>Goa</item>
+        <item>Gujrat</item>
+        <item>Haryana</item>
         <item>Himachal Pradesh</item>
         <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerela</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Odhisa</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttarakhand</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
     </string-array>
 
     <string-array name="gender">

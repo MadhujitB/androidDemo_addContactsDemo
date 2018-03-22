@@ -11,12 +11,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true">
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppThemeNoActionBarGen"
             android:screenOrientation="portrait">
         </activity>
 
@@ -35,7 +34,8 @@
 
         <activity
             android:name=".ViewContactsActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoActionBarGen">
         </activity>
 
         <activity

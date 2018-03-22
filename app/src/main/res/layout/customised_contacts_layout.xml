@@ -26,14 +26,17 @@
                 android:id="@+id/tv_displayName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorCustom_brown_900"/>
 
             <TextView
                 android:id="@+id/tv_displayGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_below="@+id/tv_displayName"/>
+                android:layout_below="@+id/tv_displayName"
+                android:textColor="@color/colorCustom_brown_900"/>
+
             <TextView
                 android:id="@+id/tv_displayAge"
                 android:layout_width="wrap_content"
@@ -44,7 +47,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_alignBaseline="@+id/tv_displayGender"/>
+                android:layout_alignBaseline="@+id/tv_displayGender"
+                android:textColor="@color/colorCustom_brown_900"/>
 
 
             <TextView
@@ -52,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_displayGender"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorCustom_brown_900"/>
 
 
             <TextView
@@ -60,13 +65,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_displayPhone"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorCustom_brown_900"/>
 
             <View
                 android:id="@+id/viewId"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorCustom_light_grey"
+                android:background="@color/colorCustom_brown_200"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/tv_displayEmail"/>
 
@@ -83,14 +89,14 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/ic_call_black_18dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:contentDescription="@null"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorCustom_light_grey"
+                    android:background="@color/colorCustom_brown_200"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     />
@@ -101,13 +107,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/ic_textsms_black_24dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:contentDescription="@null"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorCustom_light_grey"
+                    android:background="@color/colorCustom_brown_200"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     />
@@ -118,12 +124,12 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/ic_email_black_18dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:contentDescription="@null"/>
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/colorCustom_light_grey"
+                    android:background="@color/colorCustom_brown_200"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     />
@@ -134,7 +140,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:src="@drawable/ic_edit_black_24dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:contentDescription="@null"/>
 
 

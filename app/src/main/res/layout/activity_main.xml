@@ -8,56 +8,36 @@
     android:layout_height="match_parent"
     tools:context="demo.dada.com.addcontactsdemo.MainActivity">
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/customised_toolbar_layout"/>
+        </android.support.design.widget.AppBarLayout>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:gravity="center">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:titleTextColor="@android:color/white">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/imgView_menuIcon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ic_menu_white_18dp"
-                    android:contentDescription="@null"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:layout_toRightOf="@+id/imgView_menuIcon"
-                    android:layout_toEndOf="@+id/imgView_menuIcon"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_centerVertical="true"/>
-
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
         <Button
             android:id="@+id/btn_showPopUp"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_showPopUp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:layout_marginTop="300dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/custom_button_background_cyan"/>
 
         <Button
             android:id="@+id/btn_showContacts"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_showContacts"
             android:textAllCaps="false"
@@ -69,6 +49,7 @@
 
 
     </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="300dp"
@@ -101,7 +82,7 @@
                     android:layout_height="25dp"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_call_black_18dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:layout_marginTop="40dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -115,7 +96,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:textColor="@color/colorCustom_brown_900"/>
 
                 <ImageView
                     android:id="@+id/imgView_email"
@@ -124,7 +106,7 @@
                     android:contentDescription="@null"
                     android:layout_below="@+id/imgView_phone"
                     android:src="@drawable/ic_email_black_18dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -139,7 +121,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="20dp"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:textColor="@color/colorCustom_brown_900"/>
 
                 <ImageView
                     android:id="@+id/imgView_city"
@@ -148,7 +131,7 @@
                     android:contentDescription="@null"
                     android:layout_below="@+id/imgView_email"
                     android:src="@drawable/ic_location_city_black_18dp"
-                    android:tint="@color/colorCustom_light_dark_grey"
+                    android:tint="@color/colorCustom_brown_700"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -163,7 +146,37 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:textSize="18sp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorCustom_brown_900"/>
+
+                <ImageView
+                    android:id="@+id/imgView_appInfo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:contentDescription="@null"
+                    android:layout_below="@+id/imgView_city"
+                    android:src="@drawable/ic_info_white_24dp"
+                    android:tint="@color/colorCustom_brown_700"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/tv_displayAppInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/imgView_appInfo"
+                    android:layout_toEndOf="@+id/imgView_appInfo"
+                    android:layout_toRightOf="@+id/imgView_appInfo"
+                    android:layout_below="@+id/imgView_city"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="About Us"
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorCustom_brown_900"/>
+
+
+
 
                 <Button
                     android:id="@+id/btn_logout"
