@@ -12,5 +12,5 @@ UI has been changed of few screens
 Note: i) Work on user interface is also going on to make it more better than it's current user interface.
 
 To download the apk file of this project and run this application on an android deveice, here is the Dropbox link for the apk file.
-Link: https://www.dropbox.com/s/soell7wvsrteoxm/app-build-acd.apk?dl=0	
+Link: https://drive.google.com/open?id=1d1ixDTBsgHJt2nNB46oiYpSMPKNkXAEe	
 
